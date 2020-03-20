@@ -1,0 +1,16 @@
+{
+  "name": "my-twitter-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "rollup -c && node dist/bundle.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "twitter": "^1.7.1"
+  }
+}
