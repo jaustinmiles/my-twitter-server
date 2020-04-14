@@ -1,12 +1,19 @@
 const url = require("url");
-const http = require("http");
+const https = require("https");
 const Twitter = require("twitter");
+const fs = require('fs');
+const port = 443;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-const app = http.createServer((request, response) => {
+var options = {
+    key: fs.readFileSync('certs/server-key.pem'),
+    cert: fs.readFileSync('certs/server-cert.pem')
+};
+
+app = https.createServer(options, (request, response) => {
     let query_str = url.parse(request.url, true).query;
     if (query_str.query === undefined) return;
 
@@ -69,4 +76,4 @@ const app = http.createServer((request, response) => {
         })
 });
 
-app.listen(3000);
+app.listen(port);
